@@ -14,7 +14,7 @@ def setup_packages():
 
 def build_tarsnap():
     #FIXME: validate keys
-    #local("curl 'https://www.tarsnap.com/download/tarsnap-autoconf-1.0.35.tgz' -o /tmp/tarsnap.tgz")
+    local("curl 'https://www.tarsnap.com/download/tarsnap-autoconf-%s.tgz' -o /tmp/tarsnap.tgz" % TARSNAP_VERSION)
     #local("curl 'https://www.tarsnap.com/download/tarsnap-sigs-1.0.35.asc' -o /tmp/")
     #local("curl 'https://www.tarsnap.com/tarsnap-signing-key-2013.asc' -o /tmp/")
     #local("gpg --decrypt /tmp/tarsnap-sigs-1.0.35.asc")
@@ -32,7 +32,7 @@ def register_machine():
 
 def setup_cron_job():
     local("sudo cp tarsnap-backup.sh /etc/cron.daily") 
-    print "Saved CRON script to /etc/cron.daily. Edit /etc/cron.daily/tarsnap-backup.sh if you want to add directories to the backup.")
+    print "Saved CRON script to /etc/cron.daily. Edit /etc/cron.daily/tarsnap-backup.sh if you want to add directories to the backup."
 
 def setup():
     setup_packages()
